@@ -1,0 +1,41 @@
+<html>
+
+<body>
+    <button onclick="sendmail()">send mail</button>
+</body>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+    function getDataUrl(img) {
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        // Set width and height
+        canvas.width = img.width;
+        canvas.height = img.height;
+        // Draw the image
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL('image/jpeg');
+    }
+
+    function sendmail() {
+        Email.send({
+            //SecureToken: "be037cb9-75d6-4542-99ab-e50cd0b34f4c",
+            Host: "smtp.elasticemail.com",
+            Username: "wwwanandsuresh@gmail.com",
+            Password: "A5BDC18689165F4E2DA81ADF785EF6784A75",
+            To: 'wwwanandsuresh@gmail.com',
+            From: "wwwanandsuresh@gmail.com",
+            Subject: "imagee",
+            Body: "<h1>Sending an image</h1>",
+            Attachments: [{
+                name: "test.png",
+                data: da
+            }]
+        }).then(
+            message => alert(message)
+        );
+    }
+</script>
+
+</html>

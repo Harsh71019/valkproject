@@ -1,0 +1,1279 @@
+<html>
+
+<head>
+    <title>Jackets</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        /* Create two equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            height: 430px;
+            width: 50%;
+            padding: 0px;
+            /* Should be removed. Only for demonstration */
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .hide:after {
+            display: inline-block;
+        }
+        /* all colors start here */
+        
+        .printbox {
+            width: 100%;
+            height: 100%;
+            /* background-image: url("mt/box.png"); */
+            background-size: 160px;
+            background-repeat: no-repeat;
+            background-position: 48% 55%;
+            z-index: -1;
+        }
+        
+        .watermark {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 95%;
+        }
+        
+        .jf {
+            width: 100%;
+            height: 100%;
+            background-image: url("mt/jf.png");
+            background-size: 310px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .jr {
+            width: 100%;
+            height: 100%;
+            background-image: url("mt/jr.png");
+            background-size: 310px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .jl {
+            width: 100%;
+            height: 100%;
+            background-image: url("mt/jl.png");
+            background-size: 310px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .jb {
+            width: 100%;
+            height: 100%;
+            background-image: url("mt/jb.png");
+            background-size: 310px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        /* Color selections end here */
+        /* circle buttons */
+        
+        .btn-circle {
+            border: black 1px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .btn-circle-sm {
+            border: black 20px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 0.9rem;
+            border-radius: 50%;
+        }
+        /* circle buttons end  here */
+        
+        .center {
+            margin: auto;
+            width: 980px;
+            border: 0px solid rgb(255, 255, 255);
+            padding: 10px;
+            box-shadow: 4px 9px 10px 0 rgba(0, 0, 0, 0.541);
+            transition: 0.3s;
+            border-radius: 3%;
+            background: white;
+        }
+        /* ***************************************** */
+        
+        .switch-field {
+            display: flex;
+            margin-bottom: 0px;
+            overflow: hidden;
+        }
+        
+        .switch-field input {
+            position: absolute !important;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            width: 1px;
+            border: 0;
+            overflow: hidden;
+        }
+        
+        .switch-field label {
+            background-color: #ffffff;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 14px;
+            line-height: 1;
+            text-align: center;
+            padding: 8px 16px;
+            margin-bottom: 4px;
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.144);
+            /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1); */
+            transition: all 0.1s ease-in-out;
+        }
+        
+        .switch-field label:hover {
+            cursor: pointer;
+        }
+        
+        .switch-field input:checked+label {
+            background-color: rgba(250, 126, 126, 0.829);
+            box-shadow: none;
+        }
+        
+        .switch-field label:first-of-type {
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .switch-field label:last-of-type {
+            border-radius: 0 4px 4px 0;
+        }
+        /* ***************************************** */
+        
+        .center:hover {
+            box-shadow: 5px 18px 50px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .fs {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .dropdown {
+            margin-top: 20px;
+        }
+        
+        .dropdown-menu {
+            /* position: absolute; */
+            /* top: 100%; */
+            left: 0;
+            /* z-index: 1000; */
+            display: none;
+            float: left;
+            min-width: 160px;
+            /* padding: 5px 0; */
+            margin: auto;
+            font-size: 14px;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            /* -webkit-background-clip: padding-box; */
+            background-clip: padding-box;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 4px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175)
+        }
+        
+        .fortext {
+            height: 30px;
+            background: #fffcfc;
+            border-radius: 8px;
+            border: rgb(56, 62, 148) solid;
+            margin: 5px;
+            outline: none;
+        }
+        /* Clear floats after the columns
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }*/
+        
+        .iframe-pop {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+        }
+        
+        .iframe-visible {
+            display: block;
+        }
+        
+        .inner {
+            position: relative;
+            width: 55%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .inner .modal-close {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            z-index: 2;
+            transition: .4s ease;
+        }
+        
+        .inner .modal-close:after {
+            content: '\f00d';
+            font-family: FontAwesome;
+            position: absolute;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: .4s ease;
+        }
+        
+        .inner .modal-close:hover {
+            transform: scale(1.1);
+            background-color: red;
+            transition: .4s ease;
+            cursor: pointer;
+        }
+        
+        .inner .modal-close:hover:after {
+            color: #fff;
+            font-size: 28px;
+            transition: .4s ease;
+        }
+        
+        .inner .modal-contain {
+            position: relative;
+            padding-bottom: 56.25%;
+            width: 100%;
+            overflow: hidden;
+            height: 0;
+        }
+        
+        .inner .modal-contain .modal-content {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .button {
+            color: #fff !important;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            background-color: #454cad;
+            transition: .3s ease;
+        }
+        
+        .button:hover {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+        
+        .scroll {
+            padding: 4px;
+            height: 130px;
+            overflow-x: hidden;
+            overflow-x: auto;
+            text-align: justify;
+            color: black;
+        }
+        
+        .slider {
+            -webkit-appearance: none;
+            width: 90px;
+            height: 8px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        
+        .slider:hover {
+            opacity: 1;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+        }
+        
+        .backgrounds {
+            background: #000000;
+            color: black;
+            background-image: url("./mt/background/spots.png"), url("./mt/background/spots.png"), url("./mt/background/arrow.png"), url("./mt/background/spots.png"), url("./mt/background/arrow.png"), url("./mt/background/spots.png");
+            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+            background-position: 2% 10%, 95% 99%, -4% 99%, 89% -2%, 111% 50%, 50% 140%;
+            background-size: 15%, 8%, 20%, 10%, 25%, 20%;
+        }
+        
+        .elements {
+            /* background: #6d676e; */
+            background-image: url("./mt/background/red.png"), url("./mt/background/red.png"), url("./mt/background/black.png"), url("./mt/background/black.png"), url("./mt/background/black.png"), url("./mt/background/black.png");
+            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+            background-position: 4% 20%, 89% -10%, 99% 99%, 2% -3%, -2% 110%, 75% 30%;
+            background-size: 33%, 20%, 5%, 10%, 10%, 15%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all_fonts.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu|Chewy|Quattrocento+Sans|Kaushan+Script|Comfortaa|Lobster+Two|Raleway|Montserrat|Titillium+Web|Josefin+Sans|Pacifico|Orbitron|Josefin+Slab|Satisfy|Economica|Courgette' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body class="backgrounds">
+
+    <!-- <body style="background-position: center; background-size: 100% ; background-image: url(./mt/gallery/backdrop3.jpg); background-repeat: no-repeat;"> -->
+
+
+    <div style="width:980px; margin-bottom: 10px;" class="center elements">
+        <img style="width: 80px; height: 80px; display: initial;" src="mt/Valkyre_Logo.png">
+        <h2 style="">Valkyre Design Tool</h2>
+        <h4 style="font-family: Josefin Slab; font-size: 18px; ">Design Your Custom Jacket</h4>
+        <div style="padding-top: 5%; width: 98%; margin: auto;">
+
+            <div class="row">
+                <div class="column" style="background-color:rgb(247, 247, 247); border: 0px solid; border-top-left-radius: 4%; border-bottom-left-radius: 4%;">
+                    <div style="width:50%; margin:auto;">
+                        <form style="padding-top: 8%;" id="file-upload-form" class="uploader">
+                            <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+                            <label style=" padding:8px; box-shadow:5px 10px 15px #dadada;" for="file-upload" id="file-drag">
+                                <div id="start">
+                                    <button onclick="removeupload()" id="shut" type="button" style="size: 24px; border:rgba(0, 0, 0, .15)" class="close hide" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <!-- <i class="fa fa-download" aria-hidden="true"></i> -->
+                                <div id="art" >Art</div>
+                                <div id="notimage" class="hidden">Please select an image</div>
+                                <span style="background: black;" id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                            </div>
+                            <div id="response" class="hidden">
+                                <div id="messages"></div>
+                  <progress class="progress" id="file-progress" value="0">
+                    <span>0</span>%
+                  </progress>
+                </div>
+              </label>
+                        </form>
+                        <h4 id="or" style="display: inline-block; margin: 5px; color: black;">(or)</h4>
+                        <div id="diss" style="margin-top: 4px; display: inline-block;">
+                            <div style="background: white; padding: 5px; border-radius: 2%;box-shadow:5px 10px 15px #dadada;">
+                                <p id="option" style="margin: 5px;">Text</p>
+                                <textarea spellcheck="false" id="tenter" align="center" style="height: 100px ;background: #fffcfc ;border-radius: 8px; border: black solid; margin: 5px;outline: none; color: black;" placeholder="Ex: Subs to Pewds" value=""></textarea>
+                                <div style="height: 40px;">
+                                    <button style="color:black;border: none; background-color: transparent;" onclick="aleft()" class="fa fa-align-left"></button>
+                                    <button style="color:black;border: none; background-color: transparent;" onclick="acent()" class="fa fa-align-center"></button>
+                                    <button style="color:black;border: none; background-color: transparent;" onclick="aright()" class="fa fa-align-right"></button>
+                                    <button style="color:black; border: none; background-color: transparent;" onclick="ajus()" class="fa fa-align-justify"></button>
+                                </div>
+                                <button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" onclick="addtext()">Select</button>
+                                <div style="display: inline;" class="dropdown">
+                                    <button style="color: black; background-color: transparent;" class="fs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                      Font
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu scroll" aria-labelledby="dropdownMenu1">
+                                        <li id="raleway-font" style="font-family: acid-label;"><a href="#">Acid Label</a></li>
+                                        <li id="montserrat-font" style="font-family: antfarm"><a href="#">Antfarm</a></li>
+                                        <li id="titillium-font" style="font-family:bad-mofo"><a href="#">Bad Mofo</a></li>
+                                        <li id="pacifico-font" style="font-family: black-bruno"><a href="#">Black Bruno</a></li>
+                                        <li id="josefin-slab-font" style="font-family:blockletter"><a href="#">Block Letter</a></li>
+                                        <li id="orbitron-font" style="font-family: typewriter"><a href="#">Typewriter</a></li>
+                                        <li id="comfortaa-font" style="font-family: boblique;"><a href="#">Brik Oblique</a></li>
+                                        <li id="courgette-font" style="font-family: rock-it;"><a style=" font-size: 12px;" href="#">Rock It</a></li>
+                                        <li id="ubuntu-font" style="font-family: gm;"><a href="#">Price Down</a></li>
+                                        <li id="chewy-font" style="font-family: mv;"><a href="#">Marvin Vision</a></li>
+                                        <li id="lobster-two-font" style="font-family:sam;"><a href="#">Shamsons</a></li>
+                                        <li id="kaushan-script-font" style="font-family: sw;"><a href="#">Shockwave</a></li>
+                                        <li id="capp" style="font-family: cap;"><a href="#">Capture it</a></li>
+                                        <li id="satisfy-font" style="font-family: du;"><a href="#">Due Date</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hide" id="colors" style="margin-top: 6px;">
+                            <h3 style="color: #000000;">Choose Color:</h3>
+                            <div style="margin: auto;">
+                                <div class="switch-field" style="margin-left: 26px;">
+                                    <!-- <input onclick="setf1()" type="radio" id="radio-three" name="switch-two" value="t" checked/>
+                                    <label for="radio-three">Tee</label> -->
+                                    <input onclick="setf2()" type="radio" id="radio-four" name="switch-two" value="f" />
+                                    <label for="radio-four">Font</label>
+                                    <input onclick="reup()" type="radio" id="radio-five" name="switch-two" value="no" />
+                                    <label for="radio-five">Uploader</label>
+                                </div>
+                            </div>
+                            <div id="selectors" class="">
+                                <button onclick="cgreen()" style="border-radius: 50%; background: rgb(9, 158, 9); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <button onclick="cblue()" style="border-radius: 50%; background: rgb(57, 57, 236); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <button onclick="cblack()" style="border-radius: 50%; background: rgb(43, 41, 41); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <button onclick="cred()" style="border-radius: 50%; background: rgb(212, 69, 69); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <br>
+                                <button onclick="cmar()" style="border-radius: 50%; background: rgb(65, 62, 62); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <button onclick="cneon()" style="border-radius: 50%; background: yellow; border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                                <button onclick="cwhite()" style="border-radius: 50%;  background: rgb(247, 244, 244); border: 3px solid black; margin: 3px; outline: none;" class="btn btn-circle btn-circle-sm "></button>
+                            </div>
+                            <div id="re-up" class="hide">
+                                <form style="padding-top: 8px;" id="file-upload-form" class="uploader">
+                                    <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+                                    <label style=" padding:8px; border: none; background: transparent;" for="file-upload" id="file-drag">
+                                        <div id="start">
+                                            <button onclick="removeupload()" id="shut" type="button" style="size: 24px; border:rgba(0, 0, 0, .15)" class="close hide" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <!-- <i class="fa fa-download" aria-hidden="true"></i> -->
+                                        <div id="notimage" class="hidden">Please select an image</div>
+                                        <span style="background: black;" id="file-upload-btn" class="btn btn-primary">Re-upload</span>
+                                    </div>
+                                    <div id="response" class="hidden">
+                                        <div id="messages"></div>
+                                        <progress class="progress" id="file-progress" value="0">
+                                             <span>0</span>%
+                                        </progress>
+                                     </div>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column" style="background-color:rgb(248, 248, 248); border: 0px solid; border-top-right-radius: 4%; border-bottom-right-radius: 4%;">
+                    <div id="tee" style="z-index: 1;" class="jf hide">
+                        <div id="fwat" class="watermark">
+                            <div id="fbox" style="" class="printbox">
+                                <div id="textoutput" style=" text-align: initial;display: inline-block ;user-select: none;top:140px;z-index: 2 ; position: relative; margin:auto; color:white;"></div>
+                                <img style="object-fit: cover;left: 0px; width: 90px;z-index: 1;top: 160px; position: relative;" width="90px" id="file-image" src="#" alt="Preview" class="hide" ondragstart="return false;">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="teeb" style="z-index: 1;" class="jb">
+                        <div id="bwat" class="watermark">
+                            <div id="bbox" style="" class="printbox">
+                                <img style="object-fit: cover; left: 0px; width: 90px;z-index: 1;top: 160px; position: relative;" width="90px" id="back-image" src="#" alt="Preview" class="hide" ondragstart="return false;">
+                                <div id="reartext" style=" text-align: initial;display: inline-block ;user-select: none;top:140px;z-index: 2 ; position: relative; margin:auto; color:white;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="rottee()" id="rot" style="font-size: 26px; background: rgba(255, 255, 255, 0); border: none; display: -webkit-inline-box; outline: none;  text-align: center; " class="fa fa-refresh hide"></button>
+                    <label id="dir" style="display: block;" class="hide">Front</label>
+                    <button onclick="rottee()" id="rotb" style="font-size: 26px; background: rgba(255, 255, 255, 0); border: none; display: -webkit-inline-box; outline: none;  text-align: center; " class="fa fa-refresh hide"></button>
+                    <label id="dirb" style="display: block;" class="">Back</label>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div style="width: 33%; float: left;" id="pic" class="hide">
+            <p style="margin:9px;font-weight: 200; font-size: 22px; color: black;">
+                Image Size:
+                <!-- <input style="width: 90px; border-radius: 13px; background-color: rgb(245, 240, 240); text-align: center;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1); border: chartreuse" type="number" value="90" id="im-w"> -->
+            </p>
+            <input ontouchmove="changeS()" onclick="changeS()" style="width: 50%; display: inline;" type="range" min="1" max="210" value="90" class="slider" id="im-w">
+        </div>
+        <div style="width: 33%; float: left;" id="texx" class="hide">
+            <p style="margin:9px; font-weight: 200; font-size: 22px; color: black;">
+                Font Size:
+                <!-- <input style="width: 80px; border-radius: 13px; background-color: rgb(245, 240, 240); text-align: center;box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1); ;border: chartreuse" type="number" value="14" id="t-h"> -->
+                <!-- <input onclick="changet()" type="range" min="1" max="40" value="15" class="slider" id="t-h"> -->
+            </p>
+            <input ontouchmove="changet()" onclick="changet()" style="width: 50%; display: inline;" type="range" min="1" max="40" value="15" class="slider" id="t-h">
+
+        </div>
+        <div class="hide" style="display: -webkit-inline-box; margin-left: 50%;" id="cost">
+            <p style="color: black;">Cost: Rs&nbsp;</p>
+            <p style="color: black;" id="amnt">1299</p>
+        </div>
+
+        <!-- <div style="display: flow-root;width: 100%; ">
+            <a class="button video-trigger" style="background-color: rgba(0, 0, 0, 0.9);" data-video="">Place Order</a>
+            <div class="iframe-pop">
+                <div class="inner">
+                    <span class="modal-close"></span>
+                    <div id="x" class="modal-contain">
+                        <iframe src="" class="modal-content" frameborder="0" allowfullscreen></iframe>
+                        <div id="orderplace" class="modal-content"></div>
+                        <div id="rearplace" style="margin-left: 50%;" class="modal-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <button id="btnSave" onclick="save()">save</button> -->
+        <div style="display: flow-root;width: 100%; ">
+            <a id="download" download="image.png"><button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" type="button" onClick="save()">save</button></a>
+        </div>
+    </div>
+    <div id="combine" class="hide">
+        <div id="p1" style="width: 50%; float: left;">
+        </div>
+        <div id="p2" style="width: 50%; float: left;">
+        </div>
+    </div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js'></script>
+<script src='https://html2canvas.hertzen.com/dist/html2canvas.js'></script>
+<script src='https://html2canvas.hertzen.com/dist/html2canvas.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+<script>
+    /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        htmlscreenshot whole page
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
+    // html2canvas(document.querySelector("#x")).then(canvas => {
+    //     document.body.appendChild(canvas)
+    // });
+    /*sdfghjkjhgfdsdfghjkjhgfvcdxsasdfghjhgfdsdfghjkjhgfd*/
+    var tf = 1;
+
+    var gr = 2;
+
+
+    var cost = 600;
+    var f1 = [0];
+    var f2 = [0];
+    var f3 = [0];
+    var f4 = [0];
+    var ind = 0;
+
+    function setf1() {
+        tf = 1;
+        document.getElementById("re-up").classList.add("hide");
+        document.getElementById("selectors").classList.remove("hide");
+    }
+
+    function setf2() {
+        tf = 2;
+        document.getElementById("re-up").classList.add("hide");
+        document.getElementById("selectors").classList.remove("hide");
+    }
+
+    function reup() {
+        ekUpload1();
+        document.getElementById("selectors").classList.add("hide");
+        document.getElementById("re-up").classList.remove("hide");
+    }
+
+    function aleft() {
+        if (gr == 1)
+            document.getElementById("textoutput").style.textAlign = "left";
+        else
+            document.getElementById("reartext").style.textAlign = "left";
+    }
+
+    function aright() {
+        if (gr == 1)
+            document.getElementById("textoutput").style.textAlign = "right";
+        else
+            document.getElementById("reartext").style.textAlign = "right";
+
+    }
+
+    function acent() {
+        if (gr == 1)
+            document.getElementById("textoutput").style.textAlign = "center";
+        else
+            document.getElementById("reartext").style.textAlign = "center";
+
+    }
+
+    function ajus() {
+        if (gr == 1)
+            document.getElementById("textoutput").style.textAlign = "justify";
+        else
+            document.getElementById("reartext").style.textAlign = "justify";
+
+    }
+
+    function removeupload() {
+        var upp = document.getElementById('file-upload-form');
+        upp.remove()
+        document.getElementById('colors').classList.remove("hide");
+
+    }
+
+    function priceCal() {
+        var im1 = document.getElementById('file-image');
+        var im2 = document.getElementById('back-image');
+        var t1 = document.getElementById('textoutput');
+        var t2 = document.getElementById('reartext');
+        var i_cost = 1299;
+        var inc = 0.025;
+        ind += 1;
+        var fta = t1.offsetHeight * t1.offsetWidth;
+        if (fta == 0)
+            f1.push(f1[ind - 1]);
+        else
+            f1.push(fta);
+        var bta = t2.offsetHeight * t2.offsetWidth;
+        if (bta == 0)
+            f2.push(f2[ind - 1]);
+        else
+            f2.push(bta);
+        var fima = im1.offsetHeight * im1.offsetWidth;
+        if (fima == 0)
+            f3.push(f3[ind - 1]);
+        else
+            f3.push(fima);
+        var bima = im2.offsetHeight * im2.offsetWidth;
+        if (bima == 0)
+            f4.push(f4[ind - 1]);
+        else
+            f4.push(bima);
+        fta1 = f1[ind] - f1[ind - 1];
+        bta1 = f2[ind] - f2[ind - 1];
+        fima1 = f3[ind] - f3[ind - 1];
+        bima1 = f4[ind] - f4[ind - 1];
+        cost += (fta1 + bta1) * inc;
+        if (im1.className)
+            cost += 0;
+        else
+            cost += fima1 * (inc + 0.0012);
+        if (im2.className)
+            cost += 0
+        else
+            cost += bima1 * (inc + 0.0009);
+        if (cost > i_cost)
+            document.getElementById('amnt').innerHTML = Math.round(cost);
+        else
+            document.getElementById('amnt').innerHTML = Math.round(1299);
+    }
+
+    function addtext() {
+        document.getElementById('cost').classList.remove("hide");
+        var tex = document.getElementById('tenter').value
+        console.log(tex)
+        var ntex = tex.replace(/\n/g, "<br>")
+        ntex = ntex.replace(/ /g, "&nbsp;")
+        if (gr == 1) {
+            document.getElementById('rot').classList.remove("hide");
+            document.getElementById('dir').classList.remove("hide");
+            document.getElementById("textoutput").innerHTML = ntex;
+        } else if (gr == 2) {
+            document.getElementById('rotb').classList.remove("hide");
+            document.getElementById('dirb').classList.remove("hide");
+            document.getElementById("reartext").innerHTML = ntex;
+        }
+        priceCal();
+        document.getElementById('texx').classList.remove("hide");
+        var xyz = document.getElementById('file-upload-form')
+        document.getElementById('file-upload-form').style.marginTop = "5px";
+        document.getElementById('art').innerHTML = "Art (optional)"
+            //xyz.remove();
+        var xy = document.getElementById('diss')
+            // xy.remove();
+        document.getElementById('option').innerHTML = "Edit Text";
+        document.getElementById('or').remove();
+        document.getElementById('shut').classList.remove("hide");
+        // document.getElementById('colors').classList.remove("hide");
+
+    }
+
+    function changeS() {
+        //var hi = document.getElementById('im-h').value
+        var wi = document.getElementById('im-w').value
+            //console.log(hi, wi)
+        if (gr == 1) {
+            //document.getElementById("file-image").style.height = hi;
+            document.getElementById("file-image").style.width = wi;
+        } else {
+            //document.getElementById("back-image").style.height = hi;
+            document.getElementById("back-image").style.width = wi;
+        }
+        console.log('changed')
+        priceCal();
+    }
+
+
+    function changet() {
+        var si = document.getElementById('t-h').value
+        if (gr == 1)
+            document.getElementById("textoutput").style.fontSize = si;
+        else
+            document.getElementById("reartext").style.fontSize = si;
+        console.log('changed')
+        priceCal();
+    }
+
+    function rottee() {
+        if (gr == 1) {
+            var u = document.getElementById('reartext').style.fontSize;
+            console.log(u);
+            u.replace("px", '');
+            document.getElementById('t-h').value = parseInt(u);
+            gr = 2
+            document.getElementById('tee').classList.add("hide");
+            document.getElementById('teeb').classList.remove("hide");
+            document.getElementById('rotb').classList.remove("hide");
+            document.getElementById('dirb').classList.remove("hide");
+            document.getElementById('rot').classList.add("hide");
+            document.getElementById('dir').classList.add("hide");
+        } else {
+            var u = document.getElementById('textoutput').style.fontSize;
+            console.log(u);
+            u.replace("px", '');
+            document.getElementById('t-h').value = parseInt(u);
+            gr = 1
+            document.getElementById('teeb').classList.add("hide");
+            document.getElementById('tee').classList.remove("hide");
+            document.getElementById('rot').classList.remove("hide");
+            document.getElementById('dir').classList.remove("hide");
+            document.getElementById('rotb').classList.add("hide");
+            document.getElementById('dirb').classList.add("hide");
+
+        }
+    }
+    // tee shirt changes:
+    function cblack() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhblack";
+            document.getElementById("teeb").className = "backblack";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "black";
+            else
+                document.getElementById("reartext").style.color = "black";
+
+        }
+
+    }
+
+    function cgreen() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhgreen";
+            document.getElementById("teeb").className = "backgreen";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "green";
+            else
+                document.getElementById("reartext").style.color = "green";
+        }
+    }
+
+    function cblue() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhblue";
+            document.getElementById("teeb").className = "backblue";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "blue";
+            else
+                document.getElementById("reartext").style.color = "blue";
+        }
+    }
+
+    function cred() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhred";
+            document.getElementById("teeb").className = "backred";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "red";
+            else
+                document.getElementById("reartext").style.color = "red";
+        }
+    }
+
+    function cmar() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhmaroon";
+            document.getElementById("teeb").className = "backmaroon";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "grey";
+            else
+                document.getElementById("reartext").style.color = "grey";
+        }
+    }
+
+    function cneon() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhneon";
+            document.getElementById("teeb").className = "backneon";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "#FFE293";
+            else
+                document.getElementById("reartext").style.color = "#FFE293";
+        }
+    }
+
+    function cwhite() {
+        if (tf == 1) {
+            document.getElementById("tee").className = "bruhwhite";
+            document.getElementById("teeb").className = "backwhite";
+            if (gr == 1)
+                document.getElementById("teeb").classList.add("hide");
+            else
+                document.getElementById("tee").classList.add("hide");
+        } else if (tf == 2) {
+            if (gr == 1)
+                document.getElementById("textoutput").style.color = "white";
+            else
+                document.getElementById("reartext").style.color = "white";
+        }
+    }
+    //object mobility    also document.getElementById("myDIV").className = "mystyle";
+    var gMouseDownX;
+    var gMouseDownY;
+    var gMouseDownOffsetX;
+    var gMouseDownOffsetY;
+
+    function addListeners() {
+        document.getElementById('file-image').addEventListener('mousedown', mouseDown, false);
+        document.getElementById('textoutput').addEventListener('mousedown', mouseDown1, false);
+        document.getElementById('reartext').addEventListener('mousedown', mouseDown2, false);
+        document.getElementById('back-image').addEventListener('mousedown', mouseDown3, false);
+        window.addEventListener('mouseup', mouseUp, false);
+        window.addEventListener('mouseup', mouseUp1, false);
+        window.addEventListener('mouseup', mouseUp2, false);
+        window.addEventListener('mouseup', mouseUp3, false);
+    }
+
+    function mouseUp() {
+        document.getElementById("fbox").style.backgroundImage = "";
+        window.removeEventListener('mousemove', divMove, true);
+    }
+
+    function mouseUp1() {
+        document.getElementById("fbox").style.backgroundImage = "";
+        window.removeEventListener('mousemove', divMove1, true);
+    }
+
+    function mouseUp2() {
+        document.getElementById("bbox").style.backgroundImage = "";
+        window.removeEventListener('mousemove', divMove2, true);
+    }
+
+    function mouseUp3() {
+        document.getElementById("bbox").style.backgroundImage = "";
+        window.removeEventListener('mousemove', divMove3, true);
+    }
+
+    function mouseDown(e) {
+        document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
+        gMouseDownX = e.clientX;
+        gMouseDownY = e.clientY;
+
+        var div = document.getElementById('file-image');
+
+        //The following block gets the X offset (the difference between where it starts and where it was clicked)
+        // let leftPart = "";
+        let leftPart = "";
+        if (!div.style.left) {
+            leftPart += "0px"; //In case this was not defined as 0px explicitly.
+        } else
+            leftPart = div.style.left;
+        let leftPos = leftPart.indexOf("px");
+        let leftNumString = leftPart.slice(0, leftPos); // Get the X value of the object.
+        gMouseDownOffsetX = gMouseDownX - parseInt(leftNumString, 10);
+
+        //The following block gets the Y offset (the difference between where it starts and where it was clicked)
+        let topPart = "";
+        if (!div.style.top)
+            topPart += "0px"; //In case this was not defined as 0px explicitly.
+        else
+            topPart = div.style.top;
+        let topPos = topPart.indexOf("px");
+        let topNumString = topPart.slice(0, topPos); // Get the Y value of the object.
+        gMouseDownOffsetY = gMouseDownY - parseInt(topNumString, 10);
+
+        window.addEventListener('mousemove', divMove, true);
+    }
+
+    function mouseDown1(e) {
+        document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
+        gMouseDownX1 = e.clientX;
+        gMouseDownY1 = e.clientY;
+
+        var div1 = document.getElementById('textoutput');
+
+        //The following block gets the X offset (the difference between where it starts and where it was clicked)
+        // let leftPart = "";
+        let leftPart1 = "";
+        if (!div1.style.left) {
+            leftPart1 += "0px"; //In case this was not defined as 0px explicitly.
+        } else
+            leftPart1 = div1.style.left;
+        let leftPos1 = leftPart1.indexOf("px");
+        let leftNumString1 = leftPart1.slice(0, leftPos1); // Get the X value of the object.
+        gMouseDownOffsetX1 = gMouseDownX1 - parseInt(leftNumString1, 10);
+
+        let topPart1 = "";
+        if (!div1.style.top)
+            topPart1 += "0px"; //In case this was not defined as 0px explicitly.
+        else
+            topPart1 = div1.style.top;
+        let topPos1 = topPart1.indexOf("px");
+        let topNumString1 = topPart1.slice(0, topPos1); // Get the Y value of the object.
+        gMouseDownOffsetY1 = gMouseDownY1 - parseInt(topNumString1, 10);
+
+        window.addEventListener('mousemove', divMove1, true);
+    }
+
+    function mouseDown2(e) {
+        document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
+        gMouseDownX2 = e.clientX;
+        gMouseDownY2 = e.clientY;
+
+        var div2 = document.getElementById('reartext');
+
+        //The following block gets the X offset (the difference between where it starts and where it was clicked)
+        // let leftPart = "";
+        let leftPart2 = "";
+        if (!div2.style.left) {
+            leftPart2 += "0px"; //In case this was not defined as 0px explicitly.
+        } else
+            leftPart2 = div2.style.left;
+        let leftPos2 = leftPart2.indexOf("px");
+        let leftNumString2 = leftPart2.slice(0, leftPos2); // Get the X value of the object.
+        gMouseDownOffsetX2 = gMouseDownX2 - parseInt(leftNumString2, 10);
+
+        let topPart2 = "";
+        if (!div2.style.top)
+            topPart2 += "0px"; //In case this was not defined as 0px explicitly.
+        else
+            topPart2 = div2.style.top;
+        let topPos2 = topPart2.indexOf("px");
+        let topNumString2 = topPart2.slice(0, topPos2); // Get the Y value of the object.
+        gMouseDownOffsetY2 = gMouseDownY2 - parseInt(topNumString2, 10);
+
+        window.addEventListener('mousemove', divMove2, true);
+    }
+
+    function mouseDown3(e) {
+        document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
+        gMouseDownX3 = e.clientX;
+        gMouseDownY3 = e.clientY;
+
+        var div3 = document.getElementById('back-image');
+
+        //The following block gets the X offset (the difference between where it starts and where it was clicked)
+        // let leftPart = "";
+        let leftPart3 = "";
+        if (!div3.style.left) {
+            leftPart3 += "0px"; //In case this was not defined as 0px explicitly.
+        } else
+            leftPart3 = div3.style.left;
+        let leftPos3 = leftPart3.indexOf("px");
+        let leftNumString3 = leftPart3.slice(0, leftPos3); // Get the X value of the object.
+        gMouseDownOffsetX3 = gMouseDownX3 - parseInt(leftNumString3, 10);
+
+        let topPart3 = "";
+        if (!div3.style.top)
+            topPart3 += "0px"; //In case this was not defined as 0px explicitly.
+        else
+            topPart3 = div3.style.top;
+        let topPos3 = topPart3.indexOf("px");
+        let topNumString3 = topPart3.slice(0, topPos3); // Get the Y value of the object.
+        gMouseDownOffsetY3 = gMouseDownY3 - parseInt(topNumString3, 10);
+
+        window.addEventListener('mousemove', divMove3, true);
+    }
+
+    function divMove(e) {
+        var div = document.getElementById('file-image');
+        div.style.position = 'relative';
+        let topAmount = e.clientY - gMouseDownOffsetY;
+        div.style.top = topAmount + 'px';
+        let leftAmount = e.clientX - gMouseDownOffsetX;
+        div.style.left = leftAmount + 'px';
+    }
+
+    function divMove1(e) {
+        var div1 = document.getElementById('textoutput');
+        div1.style.position = 'relative';
+        let topAmount1 = e.clientY - gMouseDownOffsetY1;
+        div1.style.top = topAmount1 + 'px';
+        let leftAmount1 = e.clientX - gMouseDownOffsetX1;
+        div1.style.left = leftAmount1 + 'px';
+    }
+
+    function divMove2(e) {
+        var div2 = document.getElementById('reartext');
+        div2.style.position = 'relative';
+        let topAmount2 = e.clientY - gMouseDownOffsetY2;
+        div2.style.top = topAmount2 + 'px';
+        let leftAmount2 = e.clientX - gMouseDownOffsetX2;
+        div2.style.left = leftAmount2 + 'px';
+    }
+
+    function divMove3(e) {
+        var div3 = document.getElementById('back-image');
+        div3.style.position = 'relative';
+        let topAmount3 = e.clientY - gMouseDownOffsetY3;
+        div3.style.top = topAmount3 + 'px';
+        let leftAmount3 = e.clientX - gMouseDownOffsetX3;
+        div3.style.left = leftAmount3 + 'px';
+    }
+
+    addListeners();
+
+
+    /////////////////// file save part //////////////// there is some download error also which i can fix
+
+    function save() {
+        var v = document.getElementById("tee");
+        console.log(document.getElementsByClassName("watermark"));
+        document.getElementsByClassName("watermark")[0].style.backgroundImage = "url('mt/wat.png')";
+        html2canvas(v, {
+            useCORS: true
+        }).then(canvas => {
+            nc1 = canvas;
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = nc1.toDataURL('image/png');
+            a.download = "front.png";
+            a.click();
+            document.body.removeChild(a);
+        })
+        var u = document.getElementById("teeb");
+        document.getElementsByClassName("watermark")[1].style.backgroundImage = "url('mt/wat.png')";
+        u.classList.remove('hide');
+        html2canvas(u, {
+            useCORS: true
+        }).then(canvas => {
+            var nc2 = canvas;
+            u.classList.add('hide');
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = nc2.toDataURL('image/png');
+            a.download = "back.png";
+            a.click();
+            document.body.removeChild(a);
+        })
+        document.getElementsByClassName("watermark")[0].style.backgroundImage = "";
+        document.getElementsByClassName("watermark")[1].style.backgroundImage = "";
+    }
+
+
+    ///////////////////////////////////////////////////
+    console.log(gr)
+    $("#raleway-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "acid-label");
+        else
+            $('#reartext').css("font-family", "acid-label");
+
+    });
+
+    $("#montserrat-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "antfarm");
+        else
+            $('#reartext').css("font-family", "antfarm");
+    });
+
+    $("#titillium-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "bad-mofo");
+        else
+            $('#reartext').css("font-family", "bad-mofo");
+    });
+
+    $("#pacifico-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "black-bruno");
+        else
+            $('#reartext').css("font-family", "black-bruno");
+    });
+
+    $("#josefin-slab-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "blockletter");
+        else
+            $('#reartext').css("font-family", "blockletter");
+    });
+
+    $("#orbitron-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "typewriter");
+        else
+            $('#reartext').css("font-family", "typewriter");
+    });
+
+    $("#comfortaa-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "boblique");
+        else
+            $('#reartext').css("font-family", "boblique");
+    });
+
+    $("#courgette-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "rock-it");
+        else
+            $('#reartext').css("font-family", "rock-it");
+    });
+
+    $("#ubuntu-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "gm");
+        else
+            $('#reartext').css("font-family", "gm");
+    });
+
+    $("#chewy-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "mv");
+        else
+            $('#reartext').css("font-family", "mv");
+    });
+
+    $("#kaushan-script-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "sw");
+        else
+            $('#reartext').css("font-family", "sw");
+    });
+
+    $("#lobster-two-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "sam");
+        else
+            $('#reartext').css("font-family", "sam");
+    });
+
+    $("#capp").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "cap");
+        else
+            $('#reartext').css("font-family", "cap");
+    });
+
+    $("#satisfy-font").click(function() {
+        if (gr == 1)
+            $('#textoutput').css("font-family", "du");
+        else
+            $('#reartext').css("font-family", "du");
+    });
+
+    $(document).ready(function() {
+
+        var videoObject = $('.modal-content');
+
+        $('.video-trigger').on('click', function() {
+            console.log(document.getElementById('tee'))
+            itm = document.getElementById('tee');
+            var cln = itm.cloneNode(true);
+            cln.classList.remove("hide")
+            document.getElementById('orderplace').appendChild(cln);
+            itm1 = document.getElementById('teeb');
+            //itm1.removeClass('hide');
+            var cln1 = itm1.cloneNode(true);
+            cln1.classList.remove("hide");
+            console.log(cln1);
+            document.getElementById('rearplace').appendChild(cln1);
+
+            //videoObject.innerHTML = document.getElementById('tee');
+            //videoObject.attr('src', $(this).data('video'));
+            $('.iframe-pop').addClass('iframe-visible');
+        });
+
+        $('.modal-close').on('click', function() {
+            document.getElementById('orderplace').innerHTML = '';
+            document.getElementById('rearplace').innerHTML = '';
+            $('.iframe-pop').removeClass('iframe-visible');
+        });
+
+        // $('.iframe-pop').on('click', function() {
+        //     document.getElementById('orderplace').innerHTML = '';
+        //     document.getElementById('rearplace').innerHTML = '';
+        //     $('.iframe-pop').removeClass('iframe-visible');
+        // });
+
+    });
+</script>
+
+<script src="js/script.js"></script>
+
+</html>

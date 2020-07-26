@@ -1,0 +1,70 @@
+<!-- <meta name="viewport" content="width=device-width">
+<script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+
+<script>
+    var razorpay = new Razorpay({
+        key: 'rzp_test_v5SSxuo5SLebDV', // logo, displayed in the payment processing popup
+        image: 'https://i.imgur.com/n5tjHFD.png',
+    });
+    razorpay.once('ready', function(response) {
+        console.log(response.methods);
+    })
+</script> -->
+
+
+<button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var options = {
+        "key": "rzp_test_v5SSxuo5SLebDV", // Enter the Key ID generated from the Dashboard
+        "amount": 120000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Valkyre Customs",
+        "description": "Test Transaction",
+        "order_id": "order_EtpFyM7tFbvUxK", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function(response) {
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature)
+        },
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e) {
+        {
+            // $.ajax({
+            //     useCORS: true,
+            //     type: 'post',
+            //     url: "https://api.razorpay.com/v1/orders",
+            //     contentType: "application/json;",
+            //     data: {
+            //         "amount": 50000,
+            //         "currency": "INR",
+            //         "receipt": "receipt#1",
+            //         "payment_capture": 1
+            //     },
+            //     beforeSend: function(xhr) {
+            //         xhr.setRequestHeader("rzp_test_v5SSxuo5SLebDV", "XSfCJX1qj46BAbZh5CajCMap")
+            //     },
+            //     success: function(response) {
+            //         console.log("Success!!");
+            //     },
+
+            //     error: function(xhr, status, error) {
+            //         console.log("Status of error message" + status + "Error is" + error);
+            //     }
+
+            // });
+            rzp1.open();
+            e.preventDefault();
+        }
+    }
+</script>

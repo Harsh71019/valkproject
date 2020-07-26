@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>T-shirt checkout</title>
+    <script src="https://use.fontawesome.com/f56e4513c5.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/t_c.css">
+
+</head>
+
+<body style="padding-top: 8%;" class="backgrounds">
+    <!-- partial:index.partial.html -->
+    <div class="container">
+        <div class="form-wrapper cf">
+            <div class="five col">
+                <div class="title">
+                    <h2>Checkout</h2>
+                    <img id="c_image" src="test_images/front.png" style="width: 100%;" alt="Custom-Tee">
+                    <p id="name" class="item">Custom-Tee (preview image)</p>
+                    <p id="c_cost" class="price"></p>
+                </div>
+            </div>
+            <div class="seven col">
+                <form class="form">
+                    <input type="text" name="name" id="name" placeholder="Name">
+                    <input type="text" name="email" id="email" placeholder="Email">
+                    <div class="edate">
+                        <p>Select Size:</p>
+                        <div class="select-wrapper">
+                            <select id="size">
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+              </select>
+                        </div>
+                    </div>
+                </form>
+                <button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" onclick="submit()">Place order</button>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+
+</body>
+<script src="js/tees.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src='https://html2canvas.hertzen.com/dist/html2canvas.js'></script>
+<script src='https://html2canvas.hertzen.com/dist/html2canvas.min.js'></script>
+<script>
+    document.getElementById('c_cost').innerHTML = 'Rs ' + cost.toString();
+
+    function submit() {
+
+        var t_email = document.getElementById('email').value;
+        var si = document.getElementById('size').value;
+        console.log(si)
+        var b_con = "the designs and cost: " + cost.toString() + "size: " + si.toString();
+        Email.send({
+            //SecureToken: "be037cb9-75d6-4542-99ab-e50cd0b34f4c",
+            Host: "smtp.elasticemail.com",
+            Username: "wwwanandsuresh@gmail.com",
+            Password: "A5BDC18689165F4E2DA81ADF785EF6784A75",
+            //To: 'arindam_bora@hotmail.com',
+            To: 'wwwanandsuresh@gmail.com',
+            From: "wwwanandsuresh@gmail.com",
+            Subject: "Ordered_designs",
+            Body: b_con,
+            Attachments: [{
+                name: "back.png",
+                data: ncw2.toDataURL('image/png')
+            }, {
+                name: "front.png",
+                data: ncw1.toDataURL('image/png')
+            }]
+        }).then(
+            //message => alert(message)
+        );
+        Email.send({
+            //SecureToken: "be037cb9-75d6-4542-99ab-e50cd0b34f4c",
+            Host: "smtp.elasticemail.com",
+            Username: "wwwanandsuresh@gmail.com",
+            Password: "A5BDC18689165F4E2DA81ADF785EF6784A75",
+            // To: 'arindam_bora@hotmail.com',
+            To: t_email,
+            From: "wwwanandsuresh@gmail.com",
+            Subject: "order placed with Valkyre customs",
+            Body: "order has been placed, wait for conformation :)" //add payment link here
+        }).then(
+            message => alert("order placed")
+        );
+    }
+</script>
+
+</html>
