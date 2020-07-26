@@ -17,12 +17,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     var options = {
-        "key": "rzp_test_v5SSxuo5SLebDV", // Enter the Key ID generated from the Dashboard
-        "amount": 120000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        
+        // "key": "rzp_test_v5SSxuo5SLebDV", // Enter the Key ID generated from the Dashboard
+        "key": "rzp_test_u2vYx8CCTRLrTn", // Enter the Key ID generated from the Dashboard
+        "amount": 125000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or 500rs
         "currency": "INR",
         "name": "Valkyre Customs",
         "description": "Test Transaction",
-        "order_id": "order_EtpFyM7tFbvUxK", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        // "order_id": "order_EtpFyM7tFbvUxK", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function(response) {
             alert(response.razorpay_payment_id);
             alert(response.razorpay_order_id);
