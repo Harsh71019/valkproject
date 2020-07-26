@@ -42,7 +42,7 @@
                 </form>
                 <br>
                 <button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" onclick="submit()">Place order</button>
-                <button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" id="rzp-button1" onclick="location.href = './payments.html';">Pay</button>
+                <button style="background-color:black; border-radius: .2rem; height: 36px; line-height: 36px; color:white; font-family: inherit; font-size: 14px; font-weight: 700; padding: 0 1rem;" id="rzp-button1" >Pay</button>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
         
         // "key": "rzp_test_v5SSxuo5SLebDV", // Enter the Key ID generated from the Dashboard
         "key": "rzp_test_u2vYx8CCTRLrTn", // Enter the Key ID generated from the Dashboard
-        "amount": 125000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or 500rs
+        "amount": cost.toString() * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or 500rs
         "currency": "INR",
         "name": "Valkyre Customs",
         "description": "Test Transaction",

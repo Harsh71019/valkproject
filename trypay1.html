@@ -6,12 +6,15 @@
 <body>
 	<form action="https://www.example.com/payment/success/" method="POST"> <!-- // Replace this with your website's success callback URL -->
 	<script
-	order_amount = 50000
-	order_currency = 'INR'
-	order_receipt = 'order_rcptid_11'
-	var ordered_id = client.order.create(amount=order_amount, currency=order_currency, receipt=order_receipt, notes=notes, payment_capture='0')
-	console.log(ordered_id)
 
+		var options = {
+		  amount: 50000,  
+
+		  payment_capture: 0
+		};
+		instance.orders.create(options, function(err, order) {
+		  console.log(order);
+		});
 
 	    src="https://checkout.razorpay.com/v1/checkout.js"
 	    data-key="rzp_test_u2vYx8CCTRLrTn" 
