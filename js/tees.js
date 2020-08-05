@@ -12,7 +12,7 @@
     var nc1, nc2, ncw1, ncw2;
 
     var dis_p;
-    var cost = 600;
+    var cost = 699;
     var f1 = [0];
     var f2 = [0];
     var f3 = [0];
@@ -119,7 +119,7 @@
         if (cost > i_cost)
             document.getElementById('amnt').innerHTML = Math.round(cost);
         else
-            document.getElementById('amnt').innerHTML = Math.round(699);
+            document.getElementById('amnt').innerHTML = Math.round(i_cost);
     }
 
     function addtext() {

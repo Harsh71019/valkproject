@@ -1,9 +1,16 @@
+/*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    htmlscreenshot whole page
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    */
+// html2canvas(document.querySelector("#x")).then(canvas => {
+//     document.body.appendChild(canvas)
+// });
+/*sdfghjkjhgfdsdfghjkjhgfvcdxsasdfghjhgfdsdfghjkjhgfd*/
 var tf = 1;
 
-var gr = 1;
+var gr = 2;
 
 
-var cost = 1170;
+var cost = 1299;
 var f1 = [0];
 var f2 = [0];
 var f3 = [0];
@@ -108,7 +115,7 @@ function priceCal() {
     else
         cost += bima1 * (inc + 0.0009);
     if (cost > i_cost)
-        document.getElementById('amnt').innerHTML = Math.round(cost, 5);
+        document.getElementById('amnt').innerHTML = Math.round(cost);
     else
         document.getElementById('amnt').innerHTML = Math.round(i_cost);
 }
@@ -144,10 +151,14 @@ function addtext() {
 }
 
 function changeS() {
+    //var hi = document.getElementById('im-h').value
     var wi = document.getElementById('im-w').value
+        //console.log(hi, wi)
     if (gr == 1) {
+        //document.getElementById("file-image").style.height = hi;
         document.getElementById("file-image").style.width = wi;
     } else {
+        //document.getElementById("back-image").style.height = hi;
         document.getElementById("back-image").style.width = wi;
     }
     console.log('changed')
@@ -314,53 +325,40 @@ var gMouseDownOffsetX;
 var gMouseDownOffsetY;
 
 function addListeners() {
-    document.getElementById('file-image').addEventListener('mousedown', mmouseDown, false);
-    document.getElementById('textoutput').addEventListener('mousedown', mmouseDown1, false);
-    document.getElementById('reartext').addEventListener('mousedown', mmouseDown2, false);
-    document.getElementById('back-image').addEventListener('mousedown', mmouseDown3, false);
-    document.getElementById('file-image').addEventListener('touchstart', mouseDown, false);
-    document.getElementById('textoutput').addEventListener('touchstart', mouseDown1, false);
-    document.getElementById('reartext').addEventListener('touchstart', mouseDown2, false);
-    document.getElementById('back-image').addEventListener('touchstart', mouseDown3, false);
+    document.getElementById('file-image').addEventListener('mousedown', mouseDown, false);
+    document.getElementById('textoutput').addEventListener('mousedown', mouseDown1, false);
+    document.getElementById('reartext').addEventListener('mousedown', mouseDown2, false);
+    document.getElementById('back-image').addEventListener('mousedown', mouseDown3, false);
     window.addEventListener('mouseup', mouseUp, false);
     window.addEventListener('mouseup', mouseUp1, false);
     window.addEventListener('mouseup', mouseUp2, false);
     window.addEventListener('mouseup', mouseUp3, false);
-    window.addEventListener('touchend', mouseUp, false);
-    window.addEventListener('touchend', mouseUp1, false);
-    window.addEventListener('touchend', mouseUp2, false);
-    window.addEventListener('touchend', mouseUp3, false);
 }
 
 function mouseUp() {
     document.getElementById("fbox").style.backgroundImage = "";
-    window.removeEventListener('mousemove', mdivMove, true);
-    window.removeEventListener('touchmove', divMove, true);
+    window.removeEventListener('mousemove', divMove, true);
 }
 
 function mouseUp1() {
     document.getElementById("fbox").style.backgroundImage = "";
-    window.removeEventListener('mousemove', mdivMove1, true);
-    window.removeEventListener('touchmove', divMove1, true);
+    window.removeEventListener('mousemove', divMove1, true);
 }
 
 function mouseUp2() {
     document.getElementById("bbox").style.backgroundImage = "";
-    window.removeEventListener('mousemove', mdivMove2, true);
-    window.removeEventListener('touchmove', divMove2, true);
+    window.removeEventListener('mousemove', divMove2, true);
 }
 
 function mouseUp3() {
     document.getElementById("bbox").style.backgroundImage = "";
-    window.removeEventListener('mousemove', mdivMove3, true);
-    window.removeEventListener('touchmove', divMove3, true);
+    window.removeEventListener('mousemove', divMove3, true);
 }
 
 function mouseDown(e) {
     document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
-    gMouseDownX = e.touches[0].clientX;
-    gMouseDownY = e.touches[0].clientY;
-    console.log(gMouseDownX);
+    gMouseDownX = e.clientX;
+    gMouseDownY = e.clientY;
 
     var div = document.getElementById('file-image');
 
@@ -386,174 +384,9 @@ function mouseDown(e) {
     gMouseDownOffsetY = gMouseDownY - parseInt(topNumString, 10);
 
     window.addEventListener('mousemove', divMove, true);
-    window.addEventListener('touchmove', divMove, true);
 }
 
 function mouseDown1(e) {
-    document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
-    gMouseDownX1 = e.touches[0].clientX;
-    gMouseDownY1 = e.touches[0].clientY;
-
-    var div1 = document.getElementById('textoutput');
-
-    //The following block gets the X offset (the difference between where it starts and where it was clicked)
-    // let leftPart = "";
-    let leftPart1 = "";
-    if (!div1.style.left) {
-        leftPart1 += "0px"; //In case this was not defined as 0px explicitly.
-    } else
-        leftPart1 = div1.style.left;
-    let leftPos1 = leftPart1.indexOf("px");
-    let leftNumString1 = leftPart1.slice(0, leftPos1); // Get the X value of the object.
-    gMouseDownOffsetX1 = gMouseDownX1 - parseInt(leftNumString1, 10);
-
-    let topPart1 = "";
-    if (!div1.style.top)
-        topPart1 += "0px"; //In case this was not defined as 0px explicitly.
-    else
-        topPart1 = div1.style.top;
-    let topPos1 = topPart1.indexOf("px");
-    let topNumString1 = topPart1.slice(0, topPos1); // Get the Y value of the object.
-    gMouseDownOffsetY1 = gMouseDownY1 - parseInt(topNumString1, 10);
-
-    window.addEventListener('mousemove', divMove1, true);
-    window.addEventListener('touchmove', divMove1, true);
-}
-
-function mouseDown2(e) {
-    document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
-    gMouseDownX2 = e.touches[0].clientX;
-    gMouseDownY2 = e.touches[0].clientY;
-
-    var div2 = document.getElementById('reartext');
-
-    //The following block gets the X offset (the difference between where it starts and where it was clicked)
-    // let leftPart = "";
-    let leftPart2 = "";
-    if (!div2.style.left) {
-        leftPart2 += "0px"; //In case this was not defined as 0px explicitly.
-    } else
-        leftPart2 = div2.style.left;
-    let leftPos2 = leftPart2.indexOf("px");
-    let leftNumString2 = leftPart2.slice(0, leftPos2); // Get the X value of the object.
-    gMouseDownOffsetX2 = gMouseDownX2 - parseInt(leftNumString2, 10);
-
-    let topPart2 = "";
-    if (!div2.style.top)
-        topPart2 += "0px"; //In case this was not defined as 0px explicitly.
-    else
-        topPart2 = div2.style.top;
-    let topPos2 = topPart2.indexOf("px");
-    let topNumString2 = topPart2.slice(0, topPos2); // Get the Y value of the object.
-    gMouseDownOffsetY2 = gMouseDownY2 - parseInt(topNumString2, 10);
-
-    window.addEventListener('mousemove', divMove2, true);
-    window.addEventListener('touchmove', divMove2, true);
-}
-
-function mouseDown3(e) {
-    document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
-    gMouseDownX3 = e.touches[0].clientX;
-    gMouseDownY3 = e.touches[0].clientY;
-
-    var div3 = document.getElementById('back-image');
-
-    //The following block gets the X offset (the difference between where it starts and where it was clicked)
-    // let leftPart = "";
-    let leftPart3 = "";
-    if (!div3.style.left) {
-        leftPart3 += "0px"; //In case this was not defined as 0px explicitly.
-    } else
-        leftPart3 = div3.style.left;
-    let leftPos3 = leftPart3.indexOf("px");
-    let leftNumString3 = leftPart3.slice(0, leftPos3); // Get the X value of the object.
-    gMouseDownOffsetX3 = gMouseDownX3 - parseInt(leftNumString3, 10);
-
-    let topPart3 = "";
-    if (!div3.style.top)
-        topPart3 += "0px"; //In case this was not defined as 0px explicitly.
-    else
-        topPart3 = div3.style.top;
-    let topPos3 = topPart3.indexOf("px");
-    let topNumString3 = topPart3.slice(0, topPos3); // Get the Y value of the object.
-    gMouseDownOffsetY3 = gMouseDownY3 - parseInt(topNumString3, 10);
-
-    window.addEventListener('mousemove', divMove3, true);
-    window.addEventListener('touchmove', divMove3, true);
-
-}
-
-function divMove(e) {
-    var div = document.getElementById('file-image');
-    div.style.position = 'relative';
-    let topAmount = e.touches[0].clientY - gMouseDownOffsetY;
-    div.style.top = topAmount + 'px';
-    let leftAmount = e.touches[0].clientX - gMouseDownOffsetX;
-    div.style.left = leftAmount + 'px';
-}
-
-function divMove1(e) {
-    var div1 = document.getElementById('textoutput');
-    div1.style.position = 'relative';
-    let topAmount1 = e.touches[0].clientY - gMouseDownOffsetY1;
-    div1.style.top = topAmount1 + 'px';
-    let leftAmount1 = e.touches[0].clientX - gMouseDownOffsetX1;
-    div1.style.left = leftAmount1 + 'px';
-}
-
-function divMove2(e) {
-    var div2 = document.getElementById('reartext');
-    div2.style.position = 'relative';
-    let topAmount2 = e.touches[0].clientY - gMouseDownOffsetY2;
-    div2.style.top = topAmount2 + 'px';
-    let leftAmount2 = e.touches[0].clientX - gMouseDownOffsetX2;
-    div2.style.left = leftAmount2 + 'px';
-}
-
-function divMove3(e) {
-    var div3 = document.getElementById('back-image');
-    div3.style.position = 'relative';
-    let topAmount3 = e.touches[0].clientY - gMouseDownOffsetY3;
-    div3.style.top = topAmount3 + 'px';
-    let leftAmount3 = e.touches[0].clientX - gMouseDownOffsetX3;
-    div3.style.left = leftAmount3 + 'px';
-}
-/////////////////////////////////////////////////////////////////////////////////////////
-
-function mmouseDown(e) {
-    document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
-    gMouseDownX = e.clientX;
-    gMouseDownY = e.clientY;
-    console.log(gMouseDownX);
-
-    var div = document.getElementById('file-image');
-
-    //The following block gets the X offset (the difference between where it starts and where it was clicked)
-    // let leftPart = "";
-    let leftPart = "";
-    if (!div.style.left) {
-        leftPart += "0px"; //In case this was not defined as 0px explicitly.
-    } else
-        leftPart = div.style.left;
-    let leftPos = leftPart.indexOf("px");
-    let leftNumString = leftPart.slice(0, leftPos); // Get the X value of the object.
-    gMouseDownOffsetX = gMouseDownX - parseInt(leftNumString, 10);
-
-    //The following block gets the Y offset (the difference between where it starts and where it was clicked)
-    let topPart = "";
-    if (!div.style.top)
-        topPart += "0px"; //In case this was not defined as 0px explicitly.
-    else
-        topPart = div.style.top;
-    let topPos = topPart.indexOf("px");
-    let topNumString = topPart.slice(0, topPos); // Get the Y value of the object.
-    gMouseDownOffsetY = gMouseDownY - parseInt(topNumString, 10);
-
-    window.addEventListener('mousemove', mdivMove, true);
-    window.addEventListener('touchmove', divMove, true);
-}
-
-function mmouseDown1(e) {
     document.getElementById("fbox").style.backgroundImage = "url('mt/box.png')";
     gMouseDownX1 = e.clientX;
     gMouseDownY1 = e.clientY;
@@ -580,11 +413,10 @@ function mmouseDown1(e) {
     let topNumString1 = topPart1.slice(0, topPos1); // Get the Y value of the object.
     gMouseDownOffsetY1 = gMouseDownY1 - parseInt(topNumString1, 10);
 
-    window.addEventListener('mousemove', mdivMove1, true);
-    window.addEventListener('touchmove', divMove1, true);
+    window.addEventListener('mousemove', divMove1, true);
 }
 
-function mmouseDown2(e) {
+function mouseDown2(e) {
     document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
     gMouseDownX2 = e.clientX;
     gMouseDownY2 = e.clientY;
@@ -611,11 +443,10 @@ function mmouseDown2(e) {
     let topNumString2 = topPart2.slice(0, topPos2); // Get the Y value of the object.
     gMouseDownOffsetY2 = gMouseDownY2 - parseInt(topNumString2, 10);
 
-    window.addEventListener('mousemove', mdivMove2, true);
-    window.addEventListener('touchmove', divMove2, true);
+    window.addEventListener('mousemove', divMove2, true);
 }
 
-function mmouseDown3(e) {
+function mouseDown3(e) {
     document.getElementById("bbox").style.backgroundImage = "url('mt/box.png')";
     gMouseDownX3 = e.clientX;
     gMouseDownY3 = e.clientY;
@@ -642,11 +473,10 @@ function mmouseDown3(e) {
     let topNumString3 = topPart3.slice(0, topPos3); // Get the Y value of the object.
     gMouseDownOffsetY3 = gMouseDownY3 - parseInt(topNumString3, 10);
 
-    window.addEventListener('mousemove', mdivMove3, true);
-    window.addEventListener('touchmove', divMove3, true);
+    window.addEventListener('mousemove', divMove3, true);
 }
 
-function mdivMove(e) {
+function divMove(e) {
     var div = document.getElementById('file-image');
     div.style.position = 'relative';
     let topAmount = e.clientY - gMouseDownOffsetY;
@@ -655,7 +485,7 @@ function mdivMove(e) {
     div.style.left = leftAmount + 'px';
 }
 
-function mdivMove1(e) {
+function divMove1(e) {
     var div1 = document.getElementById('textoutput');
     div1.style.position = 'relative';
     let topAmount1 = e.clientY - gMouseDownOffsetY1;
@@ -664,7 +494,7 @@ function mdivMove1(e) {
     div1.style.left = leftAmount1 + 'px';
 }
 
-function mdivMove2(e) {
+function divMove2(e) {
     var div2 = document.getElementById('reartext');
     div2.style.position = 'relative';
     let topAmount2 = e.clientY - gMouseDownOffsetY2;
@@ -673,7 +503,7 @@ function mdivMove2(e) {
     div2.style.left = leftAmount2 + 'px';
 }
 
-function mdivMove3(e) {
+function divMove3(e) {
     var div3 = document.getElementById('back-image');
     div3.style.position = 'relative';
     let topAmount3 = e.clientY - gMouseDownOffsetY3;
@@ -681,7 +511,8 @@ function mdivMove3(e) {
     let leftAmount3 = e.clientX - gMouseDownOffsetX3;
     div3.style.left = leftAmount3 + 'px';
 }
-addListeners()
+
+addListeners();
 
 
 /////////////////// file save part //////////////// there is some download error also which i can fix
@@ -693,7 +524,7 @@ function save() {
     html2canvas(v, {
         useCORS: true
     }).then(canvas => {
-        var nc1 = canvas;
+        nc1 = canvas;
         const a = document.createElement("a");
         document.body.appendChild(a);
         a.href = nc1.toDataURL('image/png');
@@ -719,38 +550,6 @@ function save() {
     document.getElementsByClassName("watermark")[0].style.backgroundImage = "";
     document.getElementsByClassName("watermark")[1].style.backgroundImage = "";
 }
-
-// function save() {
-//     var nc2, nc1;
-//     html2canvas(document.querySelector("#tee"), {
-//         useCORS: true
-//     }).then(canvas => {
-//         nc1 = canvas;
-//     })
-//     html2canvas(document.querySelector("#teeb"), {
-//         useCORS: true
-//     }).then(canvas => {
-//         nc2 = canvas;
-//     })
-//     if (nc1 && nc2) {
-//         var image1 = nc1.toDataURL("image/png", 1.0);
-//         var image2 = nc2.toDataURL("image/png", 1.0);
-//         console.log(image1, image2);
-//         const can = document.createElement("canvas");
-//         can.height = 860;
-//         can.width = 1194;
-//         let ctx = canvas.getContext("2d");
-//         ctx.drawImage(image1, 0, 0, 972, 860);
-//         ctx.drawImage(image2, 972, 0, 972, 860);
-//         var image = can.toDataURL("image/png", 1.0)
-//             .replace("image/png", "image/octet-stream");
-//         download.setAttribute("href", image);
-//         console.log('download');
-//     }
-
-// }
-
-
 
 
 ///////////////////////////////////////////////////
@@ -853,54 +652,7 @@ $("#satisfy-font").click(function() {
     else
         $('#reartext').css("font-family", "du");
 });
-$("#ff1").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff1");
-    else
-        $('#reartext').css("font-family", "ff1");
-});
-$("#ff2").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff2");
-    else
-        $('#reartext').css("font-family", "ff2");
-});
-$("#ff3").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff3");
-    else
-        $('#reartext').css("font-family", "ff3");
-});
-$("#ff4").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff4");
-    else
-        $('#reartext').css("font-family", "ff4");
-});
-$("#ff5").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff5");
-    else
-        $('#reartext').css("font-family", "ff5");
-});
-$("#ff6").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff6");
-    else
-        $('#reartext').css("font-family", "ff6");
-});
-$("#ff7").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff7");
-    else
-        $('#reartext').css("font-family", "ff7");
-});
-$("#ff8").click(function() {
-    if (gr == 1)
-        $('#textoutput').css("font-family", "ff8");
-    else
-        $('#reartext').css("font-family", "ff8");
-});
+
 $(document).ready(function() {
 
     var videoObject = $('.modal-content');
